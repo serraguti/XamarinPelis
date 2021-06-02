@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonkeyCache.FileStore;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPelis.Services;
@@ -20,7 +21,7 @@ namespace XamarinPelis
         public App()
         {
             InitializeComponent();
-
+            Barrel.ApplicationId = "com.XamarinPelis";
             MainPage = new PeliculasView();
         }
 

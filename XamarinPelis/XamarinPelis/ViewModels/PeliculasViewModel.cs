@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonkeyCache.FileStore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -63,7 +64,11 @@ namespace XamarinPelis.ViewModels
         {
             get
             {
-                return new Command(() => { });
+                return new Command(async() => {
+                    Barrel.Current.EmptyAll();
+                    await Application.Current.MainPage.DisplayAlert
+                    ("Alert", "Cache borrado", "OK");
+                });
             }
         }
 
