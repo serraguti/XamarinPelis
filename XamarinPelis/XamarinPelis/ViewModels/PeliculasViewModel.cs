@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using XamarinPelis.Base;
 using XamarinPelis.Models;
 using XamarinPelis.Services;
@@ -31,6 +32,30 @@ namespace XamarinPelis.ViewModels
             {
                 this._Peliculas = value;
                 OnPropertyChanged("Peliculas");
+            }
+        }
+
+        private Pelicula _PeliculaSeleccionada;
+        public Pelicula PeliculaSeleccionada
+        {
+            get { return this._PeliculaSeleccionada; }
+            set
+            {
+                this._PeliculaSeleccionada = value;
+                OnPropertyChanged("PeliculaSeleccionada");
+            }
+        }
+
+        public Command MostrarDetalles
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    await Application.Current.MainPage.DisplayAlert
+                    ("Alert", "Peli " + this.PeliculaSeleccionada.Titulo
+                    , "OK");
+                });
             }
         }
     }
