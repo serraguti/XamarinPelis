@@ -6,22 +6,30 @@
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
     , Path=PeliculasViewModel}">
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Peliculas}"
+        <StackLayout>
+            <Button Text="Cargar Peliculas"
+                    Command="{Binding CargarPeliculas}"/>
+            <Button Text="Borrar Cache"
+                    Command="{Binding BorrarCache}"
+                    TextColor="Red"/>
+            <CollectionView ItemsSource="{Binding Peliculas}"
                         SelectionMode="Single"
                         SelectedItem="{Binding PeliculaSeleccionada}"
                         SelectionChangedCommand="{Binding MostrarDetalles}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
                                  Span="2"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Image Source="{Binding Poster}"
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Image Source="{Binding Poster}"
                                HorizontalOptions="Center"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

@@ -58,5 +58,26 @@ namespace XamarinPelis.ViewModels
                 });
             }
         }
+
+        public Command BorrarCache
+        {
+            get
+            {
+                return new Command(() => { });
+            }
+        }
+
+        public Command CargarPeliculas
+        {
+            get
+            {
+                return new Command(async() => {
+                    List<Pelicula> pelis =
+                    await this.ServicePeliculas.GetPeliculasAsync();
+                    this.Peliculas =
+                    new ObservableCollection<Pelicula>(pelis);
+                });
+            }
+        }
     }
 }
